@@ -34,3 +34,4 @@ sns.violinplot(titanic.Age.dropna(),titanic.Sex)
 #Cumulative Distribution Function
 fig6=plt.figure()
 sns.kdeplot(titanic.Age.dropna(),cumulative=True)
+#test test test
