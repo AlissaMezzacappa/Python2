@@ -16,7 +16,7 @@ titanic=pd.read_csv('train.csv')
 print(titanic.head())
 #histogram
 fig1=plt.figure()
-plt.hist(titanic.Age.dropna(),bins=25) #color=sns.desaturate("indianred",a))
+plt.hist(titanic.Age.dropna(),bins=25)#,color=sns.desaturate("indianred"))
 #boxplot
 fig2=plt.figure()
 sns.boxplot(titanic.Age.dropna(),vert=True)
