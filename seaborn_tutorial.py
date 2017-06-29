@@ -16,12 +16,12 @@ titanic=pd.read_csv('train.csv')
 print(titanic.head())
 #histogram
 fig1=plt.figure()
-plt.hist(titanic.Age.dropna(),bins=25)#,color=sns.desaturate("indianred"))
+plt.hist(titanic.Age.dropna(),bins=25,color=sns.desaturate("indianred",1))
 #boxplot
 fig2=plt.figure()
-sns.boxplot(titanic.Age.dropna(),vert=True)
+#sns.boxplot(titanic.Age.dropna(),vert=True)
 #two sku boxplot
-sns.boxplot(titanic.Age.dropna(),titanic.Sex) #generates error
+sns.boxplot(x=titanic.Age.dropna(),y=titanic.Sex) #generates error
 #Kernel Density Estimate Plot
 fig3=plt.figure()
 sns.kdeplot(titanic.Age.dropna(),shade=True)
