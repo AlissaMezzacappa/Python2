@@ -6,7 +6,7 @@ Created on Wed May 31 19:29:39 2017
 """
 
 import urllib
-u=urllib.urlopen('http://www.google.com/')
+u=urllib.urlopen('http://archive.ics.uci.edu/ml/datasets/Drug+consumption+%28quantified%29')
 te=u.read()
 import re
 pat=r'[a-z]'
