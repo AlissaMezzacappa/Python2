@@ -71,7 +71,7 @@ pd.merge(ages,weights,left_on='cats',right_on='other column',how='outer') #fill 
 from fuzzywuzzy import fuzz
 fuzz.ratio('this is a test', 'this is a test!") #% match
 #Graphs - ggplot=R, bokeh=interactive, seaborn=statistical, matplotlib=everything, glue
-#PDFs - tabula table from pdf to csv
+#PDFs - TABLEAU table from pdf to csv
 #Repeatability maters
 #build tools: Make, tup
 #Data pipelines: OKFN Bubbles, Storm, Spark
