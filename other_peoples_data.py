@@ -61,6 +61,10 @@ df.column[df.column.str.contains('(\d{4}-\{2})')]
 df['Item Name'].str.lower()
 #PIVOTING
 df.pivot(index='date',columns='variable',...)
+# https://pandas.pydata.org/pandas-docs/stable/reshaping.html
+foo=pd.date_range('20000103', periods=3)
+df=pd.DataFrame( {'date' : [foo,foo,foo,foo],'variable' : pd.Categorical(["A","A","A","B","B","B","C","C","C","D","D","D"]) ,'value' : np.random.randn(12,1)})
+df.pivot(index='date', columns='variable', values='value')
 #Groupby
 df.groupby('State')[['Acuisition Cost']].sum()
 #Transforming data with functions
