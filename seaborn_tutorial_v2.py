@@ -45,3 +45,46 @@ sns.boxplot(y='Group',x='value',data=dd,hue='fruits')
 #fig6=plt.figure()
 #sns.kdeplot(titanic.Age.dropna(),cumulative=True)
 ##test test test
+
+#Bubble plot
+fig = plt.figure()
+ax = fig.add_subplot(1,1,1)
+ax.scatter(df['Age'],df['Sales'], s=df['Income']) # Added third variable income as size of the bubble
+plt.show()
+
+#Color palate
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set(rc={"figure.figsize": (6, 6)})
+np.random.seed(sum(map(ord, "palettes")))
+current_palette = sns.color_palette()
+sns.palplot(current_palette)
+#circular color
+sns.palplot(sns.color_palette("hls", 8))
+#control saturation
+sns.palplot(sns.hls_palette(8, l=.3, s=.8))
+#select evenly spaces hues
+sns.palplot(sns.color_palette("husl", 8))
+#Categorical color brewer
+sns.palplot(sns.color_palette("Paired"))
+sns.palplot(sns.color_palette("Set2", 10))
+sns.palplot(sns.color_palette(flatui))
+
+
+#xkcd colors
+plt.plot([0, 1], [0, 1], sns.xkcd_rgb["pale red"], lw=3)
+plt.plot([0, 1], [0, 2], sns.xkcd_rgb["medium green"], lw=3)
+plt.plot([0, 1], [0, 3], sns.xkcd_rgb["denim blue"], lw=3);
+        colors = ["windows blue", "amber", "greyish", "faded green", "dusty purple"]
+sns.palplot(sns.xkcd_palette(colors))
+#sequential color palettes
+sns.palplot(sns.color_palette("Blues"))
+sns.palplot(sns.color_palette("BuGn_r"))
+sns.palplot(sns.color_palette("GnBu_d"))
+#diverging color palettes
+sns.palplot(sns.color_palette("BrBG", 7))
+sns.palplot(sns.color_palette("RdBu_r", 7))
+sns.palplot(sns.color_palette("coolwarm", 7))
+#cutom
+sns.palplot(sns.diverging_palette(220, 20, n=7))
