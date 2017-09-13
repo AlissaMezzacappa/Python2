@@ -10,10 +10,8 @@ import re
 matches=re.findall(r"\d+\.\s\w+", text)
 del(matches[0:3])
 del(matches[12])
-print(matches)
 for i in range(0, len(matches)):
     matches[i]=re.sub(r"\d+\.\s","",matches[i])
-print(matches)
 """#local import
 os.chdir('C:\Users\Alissa\Documents\Springboard\Capstone1\data\DrugConsumption') #cd and import data
 data=pd.read_csv('drug_consumption.txt',header=None,names=matches) #also header=None"""
@@ -33,17 +31,9 @@ drugs=data.iloc[:,13:] #CL4, CL5, CL6 are use in last month, week, day respectiv
 print(attribute.head())
 print(drugs.head())
 
+coormat=data.corr()
 
-#"""
-#correlate drugs with attributes                 
-import scipy.stats as st
-coef=np.random.rand(13,19)
-for x in xrange(0, 12): 
-    count=0 #error - invalid sytax
-    counter=0
-    for y in xrange(0,18):
-        coef[x,y]=st.pearsonr(attribute[x],drugs[y])    #error from this line
-#"""
+
 #To try: XG Boost or boosting - tree tech.
 #"""
 # Compare Algorithms
@@ -67,23 +57,34 @@ models.append(('NB', GaussianNB()))
 models.append(('SVM', SVC()))
 #rename data
 X=attribute
-Y=drugs
+Y=drugs.iloc[:,:17]
 # evaluate each model in turn
 results = []
 names = []
 scoring = 'accuracy'
-for name, model in models:
-	kfold = model_selection.KFold(n_splits=10, random_state=seed)
-	cv_results = model_selection.cross_val_score(model, X, Y, cv=kfold, scoring=scoring) #ValueError: bad input shape (1696, 19)
-	results.append(cv_results)
-	names.append(name)
-	msg = "%s: %f (%f)" % (name, cv_results.mean(), cv_results.std())
-	print(msg)
-# boxplot algorithm comparison
-fig = plt.figure()
-fig.suptitle('Algorithm Comparison')
-ax = fig.add_subplot(111)
-plt.boxplot(results)
-ax.set_xticklabels(names)
-plt.show()
+count=0      
+#n=0     
+#val=[]
+#best2=[]
+for name in Y.columns:
+   y = Y[name]
+   print(name)
+   for name, model in models:
+    	kfold = model_selection.KFold(n_splits=10, random_state=seed)
+    	cv_results = model_selection.cross_val_score(model, X, y, cv=kfold, scoring=scoring) #ValueError: bad input shape (1696, 19)
+    	results.append(cv_results)
+    	names.append(name)
+    	msg = "%s: %f (%f)" % (name, cv_results.mean(), cv_results.std())
+    	print(msg)
+#   for i in xrange(0,5):
+#       val[i]=results[6*n].mean()+ results[6*n].std()
+#   best2=val.sort_values().head(2)
+#   # boxplot algorithm comparison
+#   fig = plt.figure()
+#   fig.suptitle('Algorithm Comparison')
+#   ax = fig.add_subplot(111)
+#   plt.boxplot(results[count]) #list call by row - not working
+#   ax.set_xticklabels(names)
+#   plt.show()
+#   count=count+1
 #"""

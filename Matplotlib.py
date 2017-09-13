@@ -29,19 +29,19 @@ import numpy as np
 #fig = plt.figure()
 x = np.linspace(0, 5, 10)
 y = x ** 2
-#axes = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # left, bottom, width, height (range 0 to 1)
-#
-#axes.plot(x, y, 'r')
-#
-#axes.set_title('title');
-#axes.set_xlabel('x')
-#axes.set_ylabel('y')
-##Make inset figure inside figure
-#fig = plt.figure()
-#
-#axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
-#axes2 = fig.add_axes([0.2, 0.5, 0.4, 0.3]) # inset axes
-#
+axes = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # left, bottom, width, height (range 0 to 1)
+
+axes.plot(x, y, 'r')
+
+axes.set_title('title');
+axes.set_xlabel('x')
+axes.set_ylabel('y')
+#Make inset figure inside figure
+fig = plt.figure()
+
+axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
+axes2 = fig.add_axes([0.2, 0.5, 0.4, 0.3]) # inset axes
+
 ## main figure
 #axes1.plot(x, y, 'r')
 #axes1.set_xlabel('x')
